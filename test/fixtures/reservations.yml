@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_when: 2022-05-31
+  to_when: 2022-05-31
+  stay_number: 1
+  user: one
+  accomodation: one
+
+two:
+  from_when: 2022-05-31
+  to_when: 2022-05-31
+  stay_number: 1
+  user: two
+  accomodation: two

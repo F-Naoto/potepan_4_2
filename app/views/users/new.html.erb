@@ -1,0 +1,10 @@
+<div class="registration">
+<%= form_with(model:@user, local:true) do |f| %>
+  <%# <%= render 'layouts/error_messages', f: f.object %> 
+  <%= f.text_field :name, placeholder:"ユーザー名" %>
+  <%= f.email_field :email, placeholder:"メールアドレス"%>
+  <%= f.password_field :password, placeholder:"パスワード" %>
+  <%= f.password_field :password_confirmation, placeholder:"パスワード確認" %>
+  <%= f.submit '登録' %>
+<% end %>
+</div>
