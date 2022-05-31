@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only:%i[show edit update destroy]
   def index
-
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -24,19 +22,30 @@ class UsersController < ApplicationController
   end
   
   def edit
-
   end
 
   def update
-
+      if @user.update(user_params)
+        flash[:notice] = "更新しました。"
+        redirect_to @user
+      else
+        flash.now[:alert] = "更新できませんでした。"
+        render "edit"
+      end
   end
 
   def destroy
-
+  @user.destroy
+  flash[:notice] = "アカウントを削除しました。"
+  redirect_to root_url
   end
 
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :self_introduction, :user_img)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
 end

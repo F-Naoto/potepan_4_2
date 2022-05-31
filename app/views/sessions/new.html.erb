@@ -1,0 +1,8 @@
+<div class="registration">
+<%= form_with(url:sessions_path, scope: :session, method: :post,local:true) do |f| %>
+  <%# <%= render 'layouts/error_messages', f: f.object %> 
+  <%= f.email_field :email, placeholder:"メールアドレス"%>
+  <%= f.password_field :password, placeholder:"パスワード" %>
+  <%= f.submit 'ログイン' %>
+<% end %>
+</div>

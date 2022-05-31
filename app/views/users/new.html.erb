@@ -1,5 +1,8 @@
 <div class="registration">
 <%= form_with(model:@user, local:true) do |f| %>
+<%= @user.errors.full_messages do |message|%>
+<% message %>
+<% end %>
   <%# <%= render 'layouts/error_messages', f: f.object %> 
   <%= f.text_field :name, placeholder:"ユーザー名" %>
   <%= f.email_field :email, placeholder:"メールアドレス"%>
