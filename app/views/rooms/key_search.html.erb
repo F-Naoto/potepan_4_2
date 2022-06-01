@@ -1,0 +1,10 @@
+<%= @keywords.count %>
+
+<ul>
+  <% @keywords.each do |keyword| %>
+  <li>
+  <%= keyword.address %>
+  <%= keyword.introduction %>
+  </li>
+  <% end %>
+</ul>

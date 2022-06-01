@@ -1,0 +1,10 @@
+<%= @areas.count %>
+
+<ul>
+  <% @areas.each do |area| %>
+  <li>
+  <%= area.address %>
+  <%= area.introduction %>
+  </li>
+  <% end %>
+</ul>
