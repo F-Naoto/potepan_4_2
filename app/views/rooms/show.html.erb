@@ -1,0 +1,15 @@
+<h1>宿泊予約</h1>
+
+<div class="registration">
+<%= form_with(url:reservations_path, scope: :reservation,method: :post, local:true) do |f| %>
+
+  <%= f.date_field :from_when %>
+  <%= f.date_field :to_when %>
+  <%= f.label :stay_number, '人数' %>
+  <%= f.number_field :stay_number %>
+  <%# hidden_field不正操作？ %>
+  <%= f.hidden_field :price, value:@room.price %>
+  <%= f.hidden_field :room_id, value:@room.id %>
+  <%= f.submit '予約する' %>
+<% end %>
+</div>
