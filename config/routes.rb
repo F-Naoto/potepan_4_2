@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :rooms do
     get :area_search, on: :collection
     get :key_search, on: :collection
+    get :confirmation, on: :collection
   end
   resources :reservations
   resources :sessions

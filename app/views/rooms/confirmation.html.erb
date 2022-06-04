@@ -1,0 +1,25 @@
+<div class="registration">
+<h2>予約内容確認</h2>
+<%= @reserving_room_price %> / 日
+開始日
+<%= @reserving_from_when %>
+終了日
+<%= @reserving_to_when %>
+使用日数 : <%=@how_long_stay %>
+人数 : <%= @reserving_stay_number %>
+合計金額
+<%= @total_price %>
+
+<%= form_with(url:reservations_path, local: true ) do |f| %>
+
+  <%= f.hidden_field :price, value: @reserving_room_price %>
+  <%= f.hidden_field :room_id, value: @reserving_room_id %>
+  <%= f.hidden_field :from_when, value: @reserving_from_when %>
+  <%= f.hidden_field :to_when, value: @reserving_to_when %>
+  <%= f.hidden_field :stay_number, value: @reserving_stay_number %>
+  <%= f.hidden_field :total_price, value: @total_price %>
+
+  <%= f.submit '予約を確定'%>  
+<% end %>
+
+</div>

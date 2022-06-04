@@ -1,0 +1,24 @@
+<% @reservations.each do |reservation|%>
+<table>
+	<tbody>
+		<tr>
+			<td>ルーム画像</td>
+			<td>ルーム名</td>
+			<td>ルーム紹介</td>
+			<td>合計料金</td>
+			<td>開始日</td>
+			<td>終了日</td>
+			<td>予約確定日時</td>
+		</tr>
+		<tr>
+			<td><%= reservation.room.img %></td> 
+			<td><%= reservation.room.name %></td> 
+			<td><%= reservation.room.introduction %></td>  
+			<td><%= reservation.total_price %></td>
+			<td><%= reservation.from_when %></td>
+			<td><%= reservation.to_when %></td>
+			<td><%= reservation.created_at %></td>
+		</tr>
+	</tbody>
+</table>
+<% end %>

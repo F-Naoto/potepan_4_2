@@ -1,5 +1,10 @@
-<h1>index</h1>
+<%= if logged_in? %>
+<%= link_to '新規登録', new_user_path %>
 <%= link_to 'ログイン', new_session_path %>
+<%= link_to '予約した部屋一覧', reservations_path %>
+<% else %>
+<% end %>
+
 
 <%# エリアで検索 %>
 <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>

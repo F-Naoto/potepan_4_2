@@ -1,14 +1,13 @@
 class ReservationsController < ApplicationController
-  def show
-    @room = Room.find(params[:id])
+  def index
+    @reservations = Reservation.all
   end
 
   def new
-    # @reservation = current_user.reservations.build
+    @reservation = current_user.reservations.build
   end
 
   def create
-    @price = params[:reservation][:price]
     @reservation = current_user.reservations.build(reservation_params)
 
     if @reservation.save!
@@ -28,9 +27,10 @@ class ReservationsController < ApplicationController
     
   end
 
+
     private
     def reservation_params
-      params.require(:reservation).permit(:from_when, :to_when, :stay_number, :room_id)
+      params.permit(:from_when, :to_when, :stay_number, :total_price, :room_id)
     end
 end
 
