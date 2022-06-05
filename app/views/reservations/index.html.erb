@@ -1,5 +1,5 @@
-<% @reservations.each do |reservation|%>
-<table>
+<h1>予約済みルーム一覧</h1>
+<table class="reservation_table">
 	<tbody>
 		<tr>
 			<td>ルーム画像</td>
@@ -10,15 +10,16 @@
 			<td>終了日</td>
 			<td>予約確定日時</td>
 		</tr>
+		<% @reservations.each do |reservation|%>
 		<tr>
-			<td><%= reservation.room.img %></td> 
-			<td><%= reservation.room.name %></td> 
+			<td><%= image_tag reservation.room.img_url %></td> 
+			<td><%= link_to "#{reservation.room.name}", room_path(reservation) %></td> 
 			<td><%= reservation.room.introduction %></td>  
 			<td><%= reservation.total_price %></td>
 			<td><%= reservation.from_when %></td>
 			<td><%= reservation.to_when %></td>
 			<td><%= reservation.created_at %></td>
 		</tr>
+<% end %>
 	</tbody>
 </table>
-<% end %>

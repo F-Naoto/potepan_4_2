@@ -11,6 +11,37 @@
   </head>
 
   <body>
+  <div class="header_container">
+  <div class="header">
+    <div class="header__left">
+      <img src="assets/images/logo.png" alt="">
+      <div class="search">
+        <%# エリアで検索 %>
+        <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+          <%= f.text_field :area, placeholder:"エリア" %>
+        <% end %>
+
+        <%# キーワードで検索 %>
+        <%= form_with(url:key_search_rooms_path, scope: :search, method: :get, local: true)  do |f| %>
+          <%= f.text_field :area, placeholder:"キーワード" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="header__right">
+      <% if !logged_in? %>
+      <%= link_to 'ログイン', new_session_path %>
+      <%= link_to '登録する', new_user_path %>
+      <% else %>
+      <%= link_to 'ルーム登録', new_room_path %>
+      <%= link_to '予約済みルーム一覧', reservations_path %>
+      <%= link_to '登録済みルーム一覧', rooms_path %>
+      <%= link_to '設定', account_users_path %>
+      <%= link_to 'ログアウト', session_path(current_user), method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
     <%= yield %>
   </body>
 </html>

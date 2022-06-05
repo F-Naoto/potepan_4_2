@@ -1,5 +1,9 @@
 class RoomsController < ApplicationController
 
+  def index
+    @rooms = current_user.rooms
+  end
+
   def show
     @room = Room.find(params[:id])
   end
@@ -35,13 +39,12 @@ class RoomsController < ApplicationController
     @reserving_to_when = params[:reservation][:to_when]
     @reserving_from_when = params[:reservation][:from_when]
     @reserving_stay_number = params[:reservation][:stay_number]
-    # 人数×部屋料金で合計金額を算出
-    @total_price = total_price(@reserving_room_price,         @reserving_stay_number)
-    
-
     # 何日使用するか日数を算出
     @how_long_stay = how_long_stay(@reserving_to_when, 
-                                   @reserving_from_when)
+      @reserving_from_when)
+      
+      # 人数×部屋料金×日数で合計金額を算出
+      @total_price = total_price(@reserving_room_price, @reserving_stay_number, @how_long_stay)
   end
 
 
@@ -58,8 +61,8 @@ class RoomsController < ApplicationController
     return (to_when.to_date - from_when.to_date).to_i
   end
 
-  def total_price(price, num)
-    return price.to_i * num.to_i
+  def total_price(price, num, how_long)
+    return price.to_i * num.to_i * how_long.to_i
   end
   
 

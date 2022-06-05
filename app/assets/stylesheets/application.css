@@ -14,4 +14,24 @@
  *= require_self
  */
 
- @import "reservation";
+body{
+  color:black;
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  margin: 0;
+}
+.btn{
+  margin-top: 10px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor:pointer;
+  width: 100%;
+  height: 30px;
+}
+
+ @import "reservations";
+ @import "users";
+@import "reservations";

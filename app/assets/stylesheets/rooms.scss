@@ -1,3 +1,113 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.room_btn{
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor:pointer;
+  width: 150px;
+  height: 40px;
+}
+
+.room_table{
+  width: 70%;
+  margin: 50px auto;
+  height: 800px;
+}
+input{
+  width: 90%;
+  height: 20px;
+  border-radius: 5px;
+}
+.room_textarea{
+  width: 90%;
+  height: 100px;
+  margin: 0;
+  border-radius: 5px;
+}
+td{
+  margin: 0 15px;
+  border: 1px solid #eaedef;
+}
+.room_td_left{
+  width: 20%;
+  border-right: none;
+  }
+.room_td_right{
+  border-left: none;
+}
+.room_label{
+  font-weight: 600;
+  &::after{
+    content: "必須";
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 3px;
+  }
+}
+.room_submit{
+  @extend .room_btn;
+  width: 15%;
+}
+
+// rooms/:idの予約ページ rooms#show
+.rooms{
+  height: 700px;
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px auto;
+    height: 60%;
+    &__left{
+      width: 65%;
+      & .room_img{
+        width: 100%;
+        object-fit:cover;
+        vertical-align: middle;
+      }
+      &__bottom{
+        display: flex;
+        align-items: center;
+      }
+    }
+        &__right{
+        width: 30%;
+        padding: 20px;
+        margin: 0 50px;
+        border: 1px solid #eaedef;
+        height: 500px;
+        & .price_per_day{
+          font-size: 24px;
+          letter-spacing: 1px;
+        }
+        & input{
+          margin-bottom: 30px;
+          padding: 10px;
+          border: 1px solid #eaedef;
+      }
+    }
+  }
+}
+
+// 可能ならextendで修正
+.reservation_btn{
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor:pointer;
+  width: 95%;
+  height: 40px;
+  margin: 0 auto;
+}
+
+
+// room/indexの登録済みルーム一覧
+.resigned_rooms_table{
+    width: 90%;
+    margin: 0 auto;
+  }

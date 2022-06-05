@@ -1,0 +1,36 @@
+<div class="user">
+  <div class="user_container">
+    <%= form_with(model:@room, local:true) do |f| %>
+      <table class="user_edit_table">
+        <tbody>
+          <tr>
+            <td colspan="2">ルーム情報登録</td>
+          </tr>
+          <tr>
+            <td class="user_td_left"><%= f.label :ルーム名, class:'user_label' %></td>
+            <td class="user_td_right"><%= f.text_field  :name, placeholder:"ルーム名を入力" %></td>
+          </tr>
+          <tr>
+            <td class="user_td_left"><%= f.label :ルーム紹介, class:'user_label' %></td>
+            <td class="user_td_right"><%= f.text_area :introduction, placeholder:"ルーム説明を入力", class:"user_edit_textarea" %></td>
+          </tr>
+          <tr>
+            <td class="user_td_left"><%= f.label :料金, class:'user_label' %></td>
+            <td class="user_td_right"><%= f.text_field  :price, placeholder:"1日あたりの料金を入力"%></td>
+          </tr>
+          <tr>
+            <td class="user_td_left"><%= f.label :住所, class:'user_label' %></td>
+            <td class="user_td_right"><%= f.text_field  :address, placeholder:"住所を入力"%></td>
+          </tr>
+          <tr>
+            <td class="user_td_left"><%= f.label :ルーム画像, class:'user_label' %></td>
+            <td class="user_td_right"><%= f.file_field  :img, placeholder:"画像"%></td>
+          </tr>
+          <tr>
+            <td colspan="2"><%= f.submit '登録', class:'user_btn' %></td>
+          </tr>
+        </tbody>
+      </table>    
+    <% end %>
+  </div>
+</div>

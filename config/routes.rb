@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   end
   resources :reservations
   resources :sessions
-  resources :users
+  resources :users do
+  get :account, on: :collection
+  get :profile, on: :collection
+  end
 end

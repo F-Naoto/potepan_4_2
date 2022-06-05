@@ -1,15 +1,42 @@
-<h1>宿泊予約</h1>
+<div class="rooms">
+  <div class="rooms__inner">
+    <div class="rooms__inner__left">
+      <div>
+        <%=image_tag @room.img_url, class:"room_img"%>
+      </div>
+      <div class="rooms__inner__left__bottom">
+        <div class="user_pic">
+              <%# 代替画像 %>
+        <%=image_tag @room.img_url, class:"user_img"%>
+        </div>
+        <div class="rooms_detail">
+        <%=@room.name%>
+        <%=@room.address%>
+        </div>
+      </div>
+      <div>
+      <%=@room.introduction%>
+      </div>
+    </div>
 
-<div class="registration">
-<%= form_with(url:confirmation_rooms_path, scope: :reservation,method: :get, local:true) do |f| %>
-
-  <%= f.date_field :from_when %>
-  <%= f.date_field :to_when %>
-  <%= f.label :stay_number, '人数' %>
-  <%= f.number_field :stay_number %>
-  <%# hidden_field不正操作？ %>
-  <%= f.hidden_field :price, value:@room.price %>
-  <%= f.hidden_field :room_id, value:@room.id %>
-  <%= f.submit '予約確認' %>
-<% end %>
+    <div class="rooms__inner__right">
+      <div class="registration">
+      <p class="price_per_day">¥<%=@room.price %> / 日</p>
+        <%= form_with(url:confirmation_rooms_path, scope: :reservation,method: :get, local:true) do |f| %>
+        <%= f.label :開始日, '開始日' %>
+        <%= f.date_field :from_when %>
+        <%= f.label :終了日, '終了日' %>
+        <%= f.date_field :to_when %>
+        <%= f.label :人数, '人数' %>
+        <%= f.number_field :stay_number %>
+        <%# hidden_field不正操作されない？ %>
+        <%= f.hidden_field :price, value:@room.price %>
+        <%= f.hidden_field :room_id, value:@room.id %>
+        <%= f.submit '予約確認', class:"reservation_btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
+

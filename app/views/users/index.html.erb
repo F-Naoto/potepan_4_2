@@ -1,50 +1,45 @@
-<%= if logged_in? %>
-<%= link_to '新規登録', new_user_path %>
-<%= link_to 'ログイン', new_session_path %>
-<%= link_to '予約した部屋一覧', reservations_path %>
-<% else %>
-<% end %>
 
 
-<%# エリアで検索 %>
-<%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-  <%= f.text_field :area, placeholder:"エリア" %>
-<% end %>
-
-<%# キーワードで検索 %>
-<%= form_with(url:key_search_rooms_path, scope: :search, method: :get, local: true)  do |f| %>
-  <%= f.text_field :area, placeholder:"キーワード" %>
-<% end %>
-
-<p>Potepan Shareでまだ体験したことのない旅をしよう</p>
-<%# エリアで検索 %>
-<%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-  <%= f.text_field :area, placeholder:"エリア" %>
-<% end %>
+<div class="main">
+  <div class="main__content">
+    <div class="main__content__inner">
+      <h2>Potepan Shareでまだ体験したことのない旅をしよう</h2>
+      <%# エリアで検索 %>
+      <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+        <%= f.text_field :area, placeholder:"東京", class:"area_field" %><br>
+        <%= f.submit '探す', class:"btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%# 画像をクリックするとルームが曖昧検索で表示される %>
-<h2>おすすめのエリア</h2>
-<div class="area_reccommendation">
-<div>
-<%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-  <%= f.hidden_field :area, value:"東京" %>
-  <%= f.submit '東京', disable_with: 'Submiting...' %>
-<% end %>
-</div>
-<div>
-<%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-  <%= f.hidden_field :area, value:"大阪" %>
-  <%= f.submit '大阪', disable_with: 'Submiting...' %>
-<% end %>
-</div><div>
-<%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-  <%= f.hidden_field :area, value:"京都" %>
-  <%= f.submit '京都', disable_with: 'Submiting...' %>
-<% end %>
-</div><div>
-<%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-  <%= f.hidden_field :area, value:"札幌" %>
-  <%= f.submit '札幌', disable_with: 'Submiting...' %>
-<% end %>
-</div>
+<div class="areas">
+  <h2>おすすめのエリア</h2>
+  <div class="areas__container">
+    <div class="areas__container__inner">
+      <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+        <%= f.hidden_field :area, value:"東京" %>
+        <%= image_submit_tag("img_tokyo.jpg", class: 'search-icon') %>
+      <% end %>
+    </div>
+    <div class="areas__container__inner">
+      <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+      <%= f.hidden_field :area, value:"大阪" %>
+      <%= image_submit_tag("img_osaka.jpg", class: 'search-icon') %>
+       <% end %>
+    </div>
+    <div class="areas__container__inner">
+      <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+      <%= f.hidden_field :area, value:"京都" %>
+      <%= image_submit_tag("img_kyoto.jpg", class: 'search-icon') %>
+      <% end %>
+    </div>
+    <div class="areas__container__inner">
+      <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+      <%= f.hidden_field :area, value:"札幌" %>
+      <%= image_submit_tag("img_sapporo.jpg", class: 'search-icon') %>
+      <% end %>
+    </div>
+  </div>
 </div>
