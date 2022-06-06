@@ -42,6 +42,10 @@ class UsersController < ApplicationController
   redirect_to root_url
   end
 
+  def profile
+    @user = User.find_by(id:current_user.id)
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :self_introduction, :user_img)

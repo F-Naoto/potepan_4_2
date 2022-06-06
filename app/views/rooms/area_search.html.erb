@@ -1,11 +1,10 @@
-<%= @areas.count %>
+検索結果：<%= @areas.count %>件
 
-<ul>
+
   <% @areas.each do |area| %>
-  <li>
   <%= image_tag(area.img.url) %>
-  <%= area.address %>
   <%= area.introduction %>
-  </li>
+  <%= area.address %>
+  <%= area.price %>
   <% end %>
-</ul>
+

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       login user
       flash[:notice] = "ログインしました。"
-      redirect_to user
+      redirect_to root_url
     else
       flash[:alert] = "ログインできませんでした"
       render "new"

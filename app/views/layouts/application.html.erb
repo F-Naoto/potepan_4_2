@@ -12,19 +12,25 @@
 
   <body>
   <div class="header_container">
-  <div class="header">
-    <div class="header__left">
-      <img src="assets/images/logo.png" alt="">
+    <div class="header">
+      <div class="header__left">
+        <%= link_to image_tag("logo.png"), users_path %>
+      
       <div class="search">
         <%# エリアで検索 %>
+        <div>
         <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-          <%= f.text_field :area, placeholder:"エリア" %>
+          <%= f.text_field :area, placeholder:"\uF002 エリア" %><i class="fa-solid fa-location-dot"></i>
         <% end %>
+        </div>
 
         <%# キーワードで検索 %>
+        <div>
         <%= form_with(url:key_search_rooms_path, scope: :search, method: :get, local: true)  do |f| %>
-          <%= f.text_field :area, placeholder:"キーワード" %>
+          <%= f.text_field :area, placeholder:"\uf002 キーワード" %>
+          <i class="fa-solid fa-magnifying-glass"></i>
         <% end %>
+        </div>
       </div>
     </div>
     <div class="header__right">
