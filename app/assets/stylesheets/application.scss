@@ -46,7 +46,52 @@ a{
 li{
   list-style: none;
 }
+.errors{
+  color: red;
+}
+.flash_message{
+  background-color: aqua;
+  text-align: center;
+  & .alert{
+    margin: 0;
+  }
+}
 
- @import "reservations";
- @import "users";
+.header__left{
+  & .form_control{
+    width: 180px;
+    display: inline-block;
+    position: relative;
+    border-radius: 2px;
+  }
+  & .search input{
+    padding-left: 20px;
+  }
+} 
+.header i{
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  font-size: 18px;
+}
+.awesome_area::before{
+  font-family: "Font Awesome 5 Free";
+  content: '\f3c5';
+  font-size: 15px;
+  font-weight: 400;
+  color: black;
+}
+.awesome_keyword::before{
+  font-family: "Font Awesome 5 Free";
+  content: '\f002';
+  font-size: 15px;
+  font-weight: 400;
+  color: black;
+}
+.error_message{
+  text-align: center
+}
+
+@import "reservations";
+@import "users";
 @import "reservations";

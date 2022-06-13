@@ -6,45 +6,39 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @user = User.find_by(id:current_user.id)
   end
 
   def new
-  @room = current_user.rooms.build
+    @room = current_user.rooms.build
   end
 
   def create
   @room = current_user.rooms.build(room_params)
     if @room.save
-      redirect_to @current_user
+      flash[:alert] = "ルーム登録に成功しました。"
+      redirect_to room_path(@room)
     else
+      flash.now[:alert] = "ルーム登録に失敗しました。"
       render new_room_path
     end
   end
-  
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def destroy
-    
-  end
 
   def confirmation
-    @reserving_room_price = params[:reservation][:price]
-    @reserving_room_id = params[:reservation][:room_id]
-    @reserving_to_when = params[:reservation][:to_when]
-    @reserving_from_when = params[:reservation][:from_when]
-    @reserving_stay_number = params[:reservation][:stay_number]
+    if(@reserving_room_price = params[:reservation][:price]
+       @reserving_room_id = params[:reservation][:room_id]
+       @reserving_to_when = params[:reservation][:to_when]
+       @reserving_from_when = params[:reservation][:from_when]
+       @reserving_stay_number = params[:reservation][:stay_number]).present?
     # 何日使用するか日数を算出
     @how_long_stay = how_long_stay(@reserving_to_when, 
       @reserving_from_when)
-      
-      # 人数×部屋料金×日数で合計金額を算出
-      @total_price = total_price(@reserving_room_price, @reserving_stay_number, @how_long_stay)
+    # 人数×部屋料金×日数で合計金額を算出
+    @total_price = total_price(@reserving_room_price, @reserving_stay_number, @how_long_stay)
+    else
+      flash[:alert] = "予約に失敗しました" 
+      redirect_to room_path(params[:reservation][:room_id])
+    end
   end
 
 

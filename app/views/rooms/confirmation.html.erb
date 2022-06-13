@@ -1,29 +1,34 @@
-<div class="registration">
-<h2>予約内容確認</h2>
-<%= @reserving_room_price %> / 日
-開始日
-<%= @reserving_from_when %>
-終了日
-<%= @reserving_to_when %>
-使用日数 : <%=@how_long_stay %>
-人数 : <%= @reserving_stay_number %>
-合計金額
-<%= @total_price %>
 
-<%= form_with(url:reservations_path, local: true ) do |f| %>
 
-  <%= f.hidden_field :price, value: @reserving_room_price %>
-  <%= f.hidden_field :room_id, value: @reserving_room_id %>
-  <%= f.hidden_field :from_when, value: @reserving_from_when %>
-  <%= f.hidden_field :to_when, value: @reserving_to_when %>
-  <%= f.hidden_field :stay_number, value: @reserving_stay_number %>
-  <%= f.hidden_field :total_price, value: @total_price %>
+<div class="reservation__confirmation">
+  <div class="reservation__confirmation__container">
+    <div class="reservation__confirmation__container__inner">
+      <div class="reservation">
+        <div class="reservation_inner">
+          <div class="reservation_title"><p>予約内容確認</p></div>
+          <div class="price_per_day"><p>¥<%= @reserving_room_price %> / 日</p></div>
+          <div class="reservation_label">開始日</div>
+          <div class="reservation_inner__emphasis"><%= @reserving_from_when %></div>
+          <div class="reservation_label">終了日</div>
+          <div class="reservation_inner__emphasis"><%= @reserving_to_when %></div>
+          <div class="not_emphasis">使用日数 : <%=@how_long_stay %>日</div>
+          <div class="not_emphasis">人数 : <%= @reserving_stay_number %>人</div>
+          <div class="reservation_label">合計金額</div>
+          <div class="reservation_inner__emphasis"><%= @total_price %></div>
+          <div><p class="reservation_comment">上記内容でよろしければ「予約を確定」を押してください</p></div>
+          <%= form_with(url:reservations_path, local: true ) do |f| %>
+            <%= f.hidden_field :price, value: @reserving_room_price %>
+            <%= f.hidden_field :room_id, value: @reserving_room_id %>
+            <%= f.hidden_field :from_when, value: @reserving_from_when %>
+            <%= f.hidden_field :to_when, value: @reserving_to_when %>
+            <%= f.hidden_field :stay_number, value: @reserving_stay_number %>
+            <%= f.hidden_field :total_price, value: @total_price %>
 
-  <%= f.submit '予約を確定'%>  
-<% end %>
-
+            <%= f.submit :予約を確定, class: 'reservation_btn' %>
+            <%= link_to 'ルーム詳細に戻る', room_path(@reserving_room_id) ,class: 'back_btn' %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<%# confirmationの実装から続きをスタートする %>
-<%# ただし、他のviewからコピーをして使えば良さそうなので、楽かも %>

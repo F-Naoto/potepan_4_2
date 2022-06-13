@@ -4,6 +4,7 @@
 // table , td, th {
 // 	border-collapse: collapse;
 // }
+
 .btn{
   margin-top: 10px;
   color: white;
@@ -18,6 +19,7 @@
 .header_container{
   background-color: black;
   color: white;
+  z-index: 20;
 }
 .header{
   display: flex;
@@ -27,8 +29,55 @@
   padding-top: 10px;
   & a{
     color: white;
-    padding-left: 16px;
+    margin-left: 16px;
   }
+  & .header_login{
+    background-color:#4a90e2;
+    padding: 10px 20px;
+    line-height: 16px;
+  }
+  & .header_registration{
+    background-color:#6c757d;
+    padding: 10px 20px;
+    line-height: 16px;
+  }
+  &__right{
+    margin-top:10px;
+    width: 25%;
+    & .icon_name{
+      margin-right: 10px;
+    }
+    &__loggedin{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 10px;
+    }
+    & .btn-secondary{
+      background-color: transparent !important;
+      border:none;
+      padding: 0;
+      margin: 0;
+    }
+    & .dropdown-menu{
+    &.show{
+      transform: translate3d(-80px, 40px, 0px);
+      & a{
+        font-size: 14px;
+        color: black;
+      }
+    }
+  }
+  & img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50px;
+    z-index: 10;
+    align-items: flex-start;
+    border:none;
+  }
+}
   &__left{
   display: flex;
   justify-content: space-between;
@@ -39,13 +88,15 @@
   & .search{
     display: flex;
     & input{
-      padding: 7px;
+    padding: 7px;
+      }
     }
-  }
   }
 }
 .main{
   background-image: url(img_cover_top.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 500px;
   margin: 0;
   position: relative;
@@ -54,7 +105,7 @@
     background-color: white;
     border-radius: 10px;
     text-align: center;
-    height: 200px;
+    height: 55%;
     position: absolute;
     top:30%;
     left:5%;
@@ -80,44 +131,76 @@
 .areas{
   margin-top: 40px;
 &__container{
+  width: 90%;
+  margin: 0 auto;
   &__inner{
     width: 90%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     border-radius: 5px;
-    margin: 0 auto;
+    margin: 50px auto;
   }
   &__images{
       flex-basis: 25%;
-
+      position: relative;
+    & span{
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      right: 0;
+      color: #fff;
+      font-weight: bold;
+      z-index: 1;
+      margin: auto;
+      text-align: center;
+      font-size: 24px;
+    }
       & input{
         object-fit: cover;
-        height: 300px;
-        }
+        height: 350px;
+      }
     }
   }
 }
 
-// users/accountのページ
+// users/account アカウントページ
+.account_left{
+  border-right: 2px solid #eaedef;
+  & .account_left_inner{
+    margin-top: 20px;
+    & .user_account{
+      display: block;
+      margin-bottom: 10px;
+      &::after{
+        content: "";
+        display: inline-block;
+        width: 2px;
+        height: 20px;
+        background-color: blue;
+        margin-left: 20px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
 .user_account_table{
-  width: 70%;
+  width: 90%;
   margin: 50px auto;
   height: 300px;
-}
-td{
+& td{
   padding: 20px;
   margin: 0 15px;
   border: 1px solid #eaedef;
 }
-.user_td_left{
-  width: 20%;
+& .user_td_left{
+  width: 25%;
   border-right: none;
   }
-.user_td_right{
+& .user_td_right{
   border-left: none;
 }
-.link_to_edit{
+& .link_to_edit{
   display: block;
   color: white;
   background-color: #007bff;
@@ -127,21 +210,22 @@ td{
   margin-left: 20px;
   border-radius: 5px;
   text-decoration: none;
+  }
 }
 
 //users/:id/editのページ
 .user__edit__container{
-  width: 40%;
+  width: 50%;
   height: 60%;
   margin: 20px auto;
   border: 1px solid #eaedef;
   & .user__edit__inner{
     width: 80%;
-    margin: 0 auto;
+    margin: 30px auto;
   }
-  & h1{
+  & h3{
+    margin: 20px;
     text-align: center;
-    font-weight: 500;
   }
   & label{
     font-size: 18px;
@@ -158,7 +242,7 @@ td{
     border: none;
     border-radius: 5px;
     cursor:pointer;
-    width: 100%;
+    width: 90%;
     height: 40px;
     font-size: 18px;
     line-height: 18px;
@@ -172,7 +256,7 @@ td{
     border-radius: 5px;
     cursor:pointer;
     height: 40px;
-    width: 100%;
+    width: 90%;
     text-align: center;
     vertical-align: middle;
     border: 1px solid #eaedef;
@@ -181,31 +265,59 @@ td{
   }
 } 
 
-// プロフィール編集ページ
+// 編集ページ（プロフィールページ）
+.profile_left{
+  border-right: 2px solid #eaedef;
+  & .profile_left_inner{
+    margin-top: 20px;
+    & .user_account{
+      margin-bottom: 10px;
+    }
+    & .user_profile{
+      margin-bottom: 10px;
+      &::after{
+        content: "";
+        display: inline-block;
+        width: 2px;
+        height: 20px;
+        background-color: blue;
+        margin-left: 20px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
 .profile_table{
-  width: 70%;
+  width: 90%;
   margin: 50px auto;
   height: 400px;
+  & .user_img{
+    text-align: center;
+    & .inside_user_img{
+      width: 20%;
+    }
+  }
   & input{
   width: 90%;
-  padding: 10px;
+  padding: 20px 10px;
   margin-bottom: 20px;
   border: 1px solid #eaedef;
   border-radius: 5px;
-  &#edit_user_img{
-    border: none;
+  &#user_user_img{
+    padding: 0px;
+    border:none;
   }
   &.profile_btn{
-    width:30%;
-    color:white;
+    color: white;
     background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor:pointer;
+    width: 150px;
     height: 40px;
-    margin: 0 auto;
+    line-height: 0px;
   }
-  }
+}
   & textarea{
   width: 90%;
   padding: 10px;
@@ -217,6 +329,7 @@ td{
 td{
   margin: 0 15px;
   border: 1px solid #eaedef;
+  padding: 10px 20px;
 }
 .profile_td_left{
   width: 30%;
@@ -232,7 +345,65 @@ td{
     background-color: red;
     color: white;
     border-radius: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     padding: 3px;
   }
+}
+
+// ユーザー登録画面
+.registration__container{
+  width: 50%;
+  height: 70%;
+  margin: 60px auto;
+  border: 1px solid #eaedef;
+  & .registration__container__inner{
+    width: 80%;
+    margin: 0 auto;
+  }
+  & h1{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  & .input_container{
+    display: flex;
+    align-items:baseline;
+  }
+  & .must::before{
+    content: "必須";
+    color: #fff;
+    background-color: #ff0000a8;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 0 10px;
+    }
+  & input{
+    border: 1px solid #eaedef;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 70%;
+  }
+  & .resgistration_btn{
+    color: white;
+    background-color: #007bff;
+    margin: 10px auto;
+    border: none;
+    border-radius: 5px;
+    cursor:pointer;
+    width: 85%;
+    height: 40px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  & .new_account{
+    margin: 10px auto;
+    text-align: center;
+  }
+}
+
+.drop-items{
+  & .drop-down-item > a{
+      color: black;
+    }
 }

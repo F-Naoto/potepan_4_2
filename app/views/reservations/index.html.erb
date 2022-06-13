@@ -1,25 +1,27 @@
-<h1>予約済みルーム一覧</h1>
-<table class="reservation_table">
-	<tbody>
-		<tr>
-			<td>ルーム画像</td>
-			<td>ルーム名</td>
-			<td>ルーム紹介</td>
-			<td>合計料金</td>
-			<td>開始日</td>
-			<td>終了日</td>
-			<td>予約確定日時</td>
-		</tr>
-		<% @reservations.each do |reservation|%>
-		<tr>
-			<td><%= image_tag reservation.room.img_url %></td> 
-			<td><%= link_to "#{reservation.room.name}", room_path(reservation) %></td> 
-			<td><%= reservation.room.introduction %></td>  
-			<td><%= reservation.total_price %></td>
-			<td><%= reservation.from_when %></td>
-			<td><%= reservation.to_when %></td>
-			<td><%= reservation.created_at %></td>
-		</tr>
-<% end %>
-	</tbody>
-</table>
+<div class="reserved_room_container">
+	<h3>予約済みルーム一覧</h3>
+		<table class="reservation_table">
+			<tbody>
+				<tr>
+					<td>ルーム画像</td>
+					<td>ルーム名</td>
+					<td>ルーム紹介</td>
+					<td>合計料金</td>
+					<td>開始日</td>
+					<td>終了日</td>
+					<td>予約確定日時</td>
+				</tr>
+				<% @reservations.each do |reservation|%>
+				<tr>
+					<td class="reserved_room_img"><%= image_tag reservation.room.img_url %></td> 
+					<td><%= link_to "#{reservation.room.name}", room_path(reservation) %></td> 
+					<td><%= reservation.room.introduction %></td>  
+					<td><%= reservation.total_price %></td>
+					<td><%= reservation.from_when %></td>
+					<td><%= reservation.to_when %></td>
+					<td><%= reservation.created_at %></td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+</div>

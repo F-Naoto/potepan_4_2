@@ -1,5 +1,3 @@
-
-
 <div class="main">
   <div class="main__content">
     <div class="main__content__inner">
@@ -13,30 +11,35 @@
   </div>
 </div>
 
+
 <%# 画像をクリックするとルームが曖昧検索で表示される %>
 <div class="areas">
   <div class="areas__container">
-  <h2>おすすめのエリア</h2>
-  <div class="areas__container__inner">
+    <h2>おすすめのエリア</h2>
+     <div class="areas__container__inner">
+        <div class="areas__container__images">
+          <span>東京</span>
+          <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+          <%= f.hidden_field :area, value:"東京" %>
+          <%= image_submit_tag("img_tokyo.jpg", class: 'search-icon') %>
+          <% end %>
+        </div>
     <div class="areas__container__images">
-      <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
-        <%= f.hidden_field :area, value:"東京" %>
-        <%= image_submit_tag("img_tokyo.jpg", class: 'search-icon') %>
-      <% end %>
-    </div>
-    <div class="areas__container__images">
+        <span>大阪</span>
       <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
       <%= f.hidden_field :area, value:"大阪" %>
       <%= image_submit_tag("img_osaka.jpg", class: 'search-icon') %>
-       <% end %>
+      <% end %>
     </div>
     <div class="areas__container__images">
+      <span>京都</span>
       <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
       <%= f.hidden_field :area, value:"京都" %>
       <%= image_submit_tag("img_kyoto.jpg", class: 'search-icon') %>
       <% end %>
     </div>
     <div class="areas__container__images">
+      <span>札幌</span>
       <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
       <%= f.hidden_field :area, value:"札幌" %>
       <%= image_submit_tag("img_sapporo.jpg", class: 'search-icon') %>

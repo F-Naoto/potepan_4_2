@@ -1,8 +1,0 @@
-<% if logged_in? %>
- am <%=@user.name %>
-<%= link_to 'ログアウト', session_path, method: :delete, class: 'logout' %>
-<%= link_to '部屋を登録する', new_room_path %>
-<p>
-
-</p>
-<% end %>

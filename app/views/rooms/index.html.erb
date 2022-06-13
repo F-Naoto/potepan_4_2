@@ -1,21 +1,23 @@
-<h1>登録済みルーム一覧</h1>
-<table class="resigned_rooms_table">
-	<tbody>
-		<tr class="reserved_room">
-			<td>ルーム画像</td>
-			<td>ルーム名</td>
-			<td>ルーム紹介</td>
-			<td>料金</td>
-			<td>作成日</td>
-		</tr>
-<% @rooms.each do |room| %>
-		<tr>
-			<td><%=image_tag room.img_url%></td>
-			<td><%=link_to room.name, room_path(room) %></td>
-			<td><%=room.introduction %></td>
-			<td><%=room.price %></td>
-			<td><%=room.created_at %></td>
-		</tr>
-	</tbody>
-  <% end %>
-</table>
+<div class="registered_room_container">
+	<h3>登録済みルーム一覧</h3>
+		<table class="assigned_rooms_table">
+			<tbody>
+				<tr class="reserved_room">
+					<td>ルーム画像</td>
+					<td>ルーム名</td>
+					<td>ルーム紹介</td>
+					<td>料金</td>
+					<td>作成日</td>
+				</tr>
+		<% @rooms.each do |room| %>
+				<tr>
+					<td><%=image_tag room.img_url%></td>
+					<td><%=link_to room.name, room_path(room) %></td>
+					<td><%=room.introduction %></td>
+					<td><%=room.price %></td>
+					<td><%=room.created_at %></td>
+				</tr>
+			</tbody>
+			<% end %>
+		</table>
+</div>

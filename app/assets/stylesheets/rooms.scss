@@ -1,6 +1,7 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
 .room_btn{
   color: white;
   background-color: #007bff;
@@ -10,7 +11,6 @@
   width: 150px;
   height: 40px;
 }
-
 .room_table{
   width: 70%;
   margin: 50px auto;
@@ -18,7 +18,7 @@
 }
 input{
   width: 90%;
-  height: 20px;
+  height: 30px;
   border-radius: 5px;
 }
 .room_textarea{
@@ -32,7 +32,6 @@ td{
   border: 1px solid #eaedef;
 }
 .room_td_left{
-  width: 20%;
   border-right: none;
   }
 .room_td_right{
@@ -54,47 +53,54 @@ td{
   width: 15%;
 }
 
-// rooms/:idの予約ページ rooms#show
-.rooms{
+// rooms/:idルーム予約ページ rooms#show
+.reservation_inner{
+  margin-top: 50px;
   height: 700px;
-  &__inner{
+  & .reservation_img{
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+  }
+  & .user_img {
+    width: 30%;
+    height: auto;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  & .reservation_left_bottom{
+    margin-top: 20px;
+    padding-bottom: 20px;
     display: flex;
-    justify-content: space-between;
-    margin: 30px auto;
-    height: 60%;
-    &__left{
-      width: 65%;
-      & .room_img{
-        width: 100%;
-        object-fit:cover;
-        vertical-align: middle;
-      }
-      &__bottom{
-        display: flex;
-        align-items: center;
-      }
-    }
-        &__right{
-        width: 30%;
-        padding: 20px;
-        margin: 0 50px;
-        border: 1px solid #eaedef;
-        height: 500px;
-        & .price_per_day{
-          font-size: 24px;
-          letter-spacing: 1px;
-        }
-        & input{
-          margin-bottom: 30px;
-          padding: 10px;
-          border: 1px solid #eaedef;
+    align-items: center;
+    border-bottom: 1px solid #eaedef;
+  }
+  & .room_introduction{
+    border-bottom: 1px solid #eaedef;
+    padding: 30px 0px;
+  }
+  & .price_per_day{
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  & .reservation_form{
+    border: 1px solid #eaedef;
+    height: 450px;
+    &__inner{
+      margin-top: 20px;
+      margin-left: 10px;
+      & label{
+        margin-bottom: 0px;
       }
     }
   }
-}
-
-// 可能ならextendで修正
-.reservation_btn{
+  & input{
+    border: 1px solid #eaedef;
+    margin: 10px 0px 30px 0px;
+    padding: 10px;
+  }
+  // 可能ならextendで修正
+& .reservation_btn{
   color: white;
   background-color: #007bff;
   border: none;
@@ -103,11 +109,54 @@ td{
   width: 95%;
   height: 40px;
   margin: 0 auto;
+  }
 }
 
-
 // room/indexの登録済みルーム一覧
-.resigned_rooms_table{
-    width: 90%;
+.registered_room_container{
+  width: 90%;
+  margin: 20px auto;
+.assigned_rooms_table{
+    width: 100%;
     margin: 0 auto;
+    border-collapse: collapse;
+& img{
+    width: 50%;
+    height: auto;
+    object-fit: contain;
   }
+& td{
+  width: 20%;
+  &:first-child{
+    text-align: center;
+  }
+    }
+  }
+}
+
+// rooms/area_searchのエリア別一覧ページ
+.search_result_num{
+  font-size: 30px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.rooms{
+&__container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+&__inner{
+  display: inline-block;
+  flex-basis: 20%;
+  & .rooms__img {
+    height: 250px;
+  & > img{
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+      }
+    }
+  }
+}

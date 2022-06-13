@@ -1,22 +1,39 @@
-<div class="user">
-  <div class="user_container">
-    <table class="user_account_table">
-      <tbody>
-        <tr>
-          <td colspan="2", class="user_td_left">アカウント</td>
-        </tr>
-        <tr>
-          <td class="user_td_left">メールアドレス</td>
-          <td class="user_td_right"><%= current_user.email %></td>
-        </tr>
-        <tr>
-          <td class="user_td_left">パスワード</td>
-          <td class="user_td_right">**********</td>
-        </tr>
-        <tr>
-          <td colspan="2"><%= link_to "編集 ", edit_user_path(current_user), class:'link_to_edit user_td_left' %></td>
-        </tr>
-      </tbody>
-    </table>    
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 account_left">
+      <div class="account_left_inner">
+        <div class='user_account' >
+        <%= link_to 'アカウント', account_users_path %>
+        </div>
+        <div class='user_profile' >
+        <%= link_to 'プロフィール', profile_users_path %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="user">
+        <div class="user_container">
+          <table class="user_account_table">
+          <tbody>
+          <tr>
+            <td colspan="2", class="user_td_left">アカウント</td>
+          </tr>
+          <tr>
+            <td class="user_td_left">メールアドレス</td>
+            <td class="user_td_right"><%= current_user.email %></td>
+          </tr>
+          <tr>
+            <td class="user_td_left">パスワード</td>
+            <td class="user_td_right">**********</td>
+          </tr>
+          <tr>
+            <td colspan="2"><%= link_to "編集 ", edit_user_path(current_user), class:'link_to_edit user_td_left' %></td>
+          </tr>
+         </tbody>
+         </table>    
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

@@ -1,32 +1,52 @@
-<div class="profile">
-  <div class="profile__container">
-    <%= form_with(model:@user, local:true) do |f| %>
-      <table class="profile_table">
-        <tbody>
-          <tr>
-            <td colspan="2">プロフィール</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-            <%=@user.user_img %></td>
-          </tr>
-          <tr>
-            <td class="profile_td_left"><%= f.label :アイコン画像, class:'profile_label' %></td>
-            <td class="profile_td_right"><%= f.file_field :user_img %></td>
-          </tr>
-          <tr>
-            <td class="profile_td_left"><%= f.label :名前, class:'profile_label' %></td>
-            <td class="profile_td_right"><%= f.text_field  :name %></td>
-          </tr>
-          <tr>
-            <td class="profile_td_left"><%= f.label :自己紹介, class:'profile_label' %></td>
-            <td class="profile_td_right"><%= f.text_area :self_introduction %></td>
-          </tr>
-          <tr>
-            <td colspan="2"><%= f.submit '更新', class:'profile_btn' %></td>
-          </tr>
-        </tbody>
-      </table>    
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 profile_left">
+      <div class="profile_left_inner">
+        <div class='user_account' >
+        <%= link_to 'アカウント', account_users_path %>
+        </div>
+        <div class='user_profile' >
+        <%= link_to 'プロフィール', profile_users_path %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="profile">
+        <div class="profile_container">
+          <%= form_with(model:@user, local:true) do |f| %>
+          <%= render 'layouts/error_messages', object:f.object %>
+            <table class="profile_table">
+              <tbody>
+                <tr>
+                  <td colspan="2">プロフィール</td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                  <%if !@user.user_img_url.nil? %>
+                  <div class="user_img"><%=image_tag @user.user_img_url, class:"inside_user_img"%></div>
+                  <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="profile_td_left"><%= f.label :アイコン画像, class:'profile_label' %></td>
+                  <td class="profile_td_right"><%= f.file_field :user_img %></td>
+                </tr>
+                <tr>
+                  <td class="profile_td_left"><%= f.label :名前, class:'profile_label' %></td>
+                  <td class="profile_td_right"><%= f.text_field  :name %></td>
+                </tr>
+                <tr>
+                  <td class="profile_td_left"><%= f.label :自己紹介, class:'profile_label' %></td>
+                  <td class="profile_td_right"><%= f.text_area :self_introduction %></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><%= f.submit '更新', class:'profile_btn' %></td>
+                </tr>
+              </tbody>
+            </table>    
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

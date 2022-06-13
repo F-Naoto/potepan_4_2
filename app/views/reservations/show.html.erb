@@ -1,0 +1,24 @@
+<div class="reservation_history">
+  <div class="reservation_history_container">
+    <table class="reservation_history_table">
+    <tbody>
+    <tr>
+      <td class="reservation_td_left">予約した部屋</td>
+      <td class="reservation_td_right"><%=@room.name %></td>
+    </tr>
+    <tr>
+      <td class="reservation_td_left">開始日</td>
+      <td class="reservation_td_right"><%= @reservation.from_when %></td>
+    </tr> 
+    <tr>
+      <td class="reservation_td_left">終了日</td>
+      <td class="reservation_td_right"><%= @reservation.to_when %></td>
+    </tr>
+    <tr>
+      <td class="reservation_td_left">価格</td>
+      <td class="reservation_td_right"><%=@reservation.total_price %>円</td>
+    </tr>
+    </tbody>
+    </table>    
+  </div>
+</div>
