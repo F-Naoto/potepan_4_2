@@ -14,7 +14,7 @@
 				<% @reservations.each do |reservation|%>
 				<tr>
 					<td class="reserved_room_img"><%= image_tag reservation.room.img_url %></td> 
-					<td><%= link_to "#{reservation.room.name}", room_path(reservation) %></td> 
+					<td><%= link_to "#{reservation.room.name}", room_path(reservation.room.id) %></td> 
 					<td><%= reservation.room.introduction %></td>  
 					<td><%= reservation.total_price %></td>
 					<td><%= reservation.from_when %></td>

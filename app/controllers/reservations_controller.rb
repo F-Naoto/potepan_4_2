@@ -2,38 +2,31 @@ class ReservationsController < ApplicationController
   before_action :confirmation_logged_in, only:%i[index show new create]
 
   def index
-    @reservations = Reservation.all
+    @reservations = current_user.reservations.order(updated_at: 'DESC')
   end
 
   def show
     @reservation = Reservation.find(params[:id])
-    roomId = current_user.reservations.find_by(id:params[:id]).room_id
-    @room = Room.find_by(id:roomId)
+    @room = Room.find(@reservation.room_id)
   end
     
-  def new
-    @reservation = current_user.reservations.build
-  end
-
   def create
     @reservation = current_user.reservations.build(reservation_params)
-    if @reservation.save!
-      flash[:message]="予約に成功しました。"
-      redirect_to reservation_path(@reservation)
-    end
+    @room = Room.find(@reservation.room_id)
+    render 'rooms/show' and return if params[:back] || !@reservation.save
+    redirect_to @reservation
   end
-  
-  # def edit
-  # end
 
-  # def update
-  # end
+  def confirmation
+    @reservation = current_user.reservations.build(reservation_params)
+    @room = Room.find(@reservation.room_id)
+    @user = @reservation.user
+    render 'rooms/show' if @reservation.invalid?
+  end
 
-  # def destroy
-  # end
-    private
+  private
     def reservation_params
-      params.permit(:from_when, :to_when, :stay_number, :total_price, :room_id)
+      params.require(:reservation).permit(:from_when, :to_when, :stay_number, :room_id, :user_id)
     end
 end
 

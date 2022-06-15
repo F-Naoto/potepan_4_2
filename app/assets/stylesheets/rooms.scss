@@ -89,6 +89,9 @@ td{
     &__inner{
       margin-top: 20px;
       margin-left: 10px;
+      & ul{
+        padding: 0;
+      }
       & label{
         margin-bottom: 0px;
       }

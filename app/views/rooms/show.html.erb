@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row reservation_inner">
     <div class="col-md-8">
-          <%=image_tag @room.img_url, class:"reservation_img" %>
+      <%=image_tag @room.img_url, class:"reservation_img" if !@room.img_url.nil? %>
         <div>
           <div class="reservation_left_bottom">
               <%=image_tag @user.user_img_url, class:"user_img" if !@user.user_img_url.nil? %>
@@ -17,15 +17,15 @@
       <div class="reservation_form" >
         <div class="reservation_form__inner" >
           <p class="price_per_day">¥<%=@room.price %> / 日</p>
-          <%= form_with(url:confirmation_rooms_path, scope: :reservation, method: :get, local:true) do |f| %>
+          <%= form_with(model:@reservation, url:confirmation_reservations_path, local:true) do |f| %>
+          <div class="reservation_error_message">
+          <%= render 'layouts/error_messages', object:f.object %></div>
           <%= f.label :開始日, '開始日' %>
           <%= f.date_field :from_when %>
           <%= f.label :終了日, '終了日' %>
           <%= f.date_field :to_when %>
           <%= f.label :人数, '人数' %>
           <%= f.number_field :stay_number %>
-          <%# hidden_field不正操作されない？ %>
-          <%= f.hidden_field :price, value:@room.price %>
           <%= f.hidden_field :room_id, value:@room.id %>
           <%= f.submit '予約確認', class:"reservation_btn" %>
           <% end %>
