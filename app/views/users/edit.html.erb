@@ -1,0 +1,24 @@
+<div class="user__edit">
+  <div class="user__edit__container">
+    <div class="user__edit__inner">
+      <h3>アカウント編集</h3>
+        <%= form_with(model:@user, local:true) do |f| %>
+        <%= render 'layouts/error_messages', object: f.object %>
+        
+        <div><%= f.label :email, 'メールアドレス' %></div>
+        <div><%= f.email_field :email %></div>
+
+        <div><%= f.label :password, '変更後パスワード（変更する場合のみ入力）' %></div>
+        <div><%= f.password_field :password, autocomplete:"off" %></div>
+
+        <div><%= f.label :password_confirmation, 'パスワード確認用（変更する場合のみ入力）' %></div>
+        <div><%= f.password_field :password_confirmation %></div>
+
+        <div><%= f.label :password, '現在のパスワード' %> </div>
+        <%= f.password_field :password %>
+        <%= f.submit '更新', class:'edit_btn' %>
+        <% end %>
+        <%= link_to '戻る', :back, class: 'link' %>
+    </div>
+  </div>
+</div>

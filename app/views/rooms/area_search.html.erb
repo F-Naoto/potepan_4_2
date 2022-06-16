@@ -1,0 +1,28 @@
+<div class="search_result_num">
+検索結果：<%= @areas.count %>件
+</div>
+
+  <div class="rooms">
+    <div class="rooms__container">
+      <% @areas.each do |area| %>
+        <div class="rooms__inner">
+          <%= link_to(room_path(area)) do %>
+            <div class="rooms__img">
+              <%= image_tag(area.img.url) %>
+            </div>
+            <div class="rooms__profile">
+              <p class="rooms__profile__name"><%= area.introduction %></p>
+              <p class="rooms__profile__address"><%= area.address %></p>
+              <p class="rooms__profile__price"><%= area.price %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  
+  
+
+

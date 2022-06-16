@@ -3,14 +3,68 @@
   <head>
     <title>StayReservationApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <div class="header_container">
+    <div class="header">
+      <div class="header__left">
+        <%= link_to image_tag("logo.png"), users_path %>
+        <div class="search">
+          <%# エリアで検索 %>
+          <div class="form_control">
+            <%= form_with(url:area_search_rooms_path, scope: :search, method: :get, local:true) do |f| %>
+            <%= f.text_field :area, placeholder:"エリア" %>
+             <i class="awesome_area"></i>
+            <% end %>
+          </div>
+        <%# キーワードで検索 %>
+          <div class="form_control">
+          <%= form_with(url:key_search_rooms_path, scope: :search, method: :get, local: true)  do |f| %>
+          <%= f.text_field :area, placeholder:"キーワード", class:"form_control" %>
+          <i class="awesome_keyword"></i>
+          <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="header__right">
+        <% if !logged_in? %>
+        <%= link_to 'ログイン', new_session_path, class:"header_login" %>
+        <%= link_to '登録する', new_user_path, class:"header_registration" %>
+        <% else %>
+        <div class="header__right__loggedin">
+        <div class="icon_name"><%= current_user.name%></div>  
+  <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <% if !current_user.user_img_url.nil?%>
+      <%=image_tag current_user.user_img_url%>
+      <% else %>
+      <%=image_tag "img_tokyo.jpg"%>
+      <% end %>
+    </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <div class="drop-items">
+      <div><%= link_to 'ルーム登録', new_room_path, class:"drop-down-item"%></div>
+      <div><%= link_to '予約済みルーム一覧', reservations_path, class:"drop-down-item"%></div>
+      <div><%= link_to '登録済みルーム一覧', rooms_path, class:"drop-down-item"%></div>
+      <div><%= link_to '設定', account_users_path, class:"drop-down-item"%></div>
+      <div><%= link_to 'ログアウト', session_path(current_user), method: :delete, class:"drop-down-item"%></div>
+    </div>
+  </div>
+</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+     <%= render 'layouts/flash_message' %>
     <%= yield %>
   </body>
 </html>

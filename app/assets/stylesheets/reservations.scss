@@ -1,0 +1,113 @@
+// 予約済みルーム一覧
+.reserved_room_container{
+  width: 90%;
+  margin: 20px auto;
+	& .reservation_table{
+	width: 100%;
+	border-collapse: collapse;
+  & .reserved_room_img{
+    text-align: center;
+    object-fit: contain;
+    width: 20%;
+    & > img{
+      width: 50%;
+      }
+    }
+  }
+}
+
+
+// 予約確認画面
+.reservation__confirmation__container{
+  width: 50%;
+  height: 60%;
+  margin: 20px auto;
+  border: 1px solid #eaedef;
+  & .reservation_title{
+    border-bottom: 1px solid #eaedef;
+  }
+  & .reservation_inner{
+    width: 90%;
+    margin: 0 auto;
+    & .reservation_title{
+      font-size: 20px;
+      margin-top: 20px;
+    }
+    & .price_per_day{
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    & .reservation_comment{
+      margin-top: 10px;
+      border-bottom: 1px solid #eaedef;
+    }
+    & .reservation_comment{
+      border-bottom: 1px solid #eaedef;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      padding-bottom: 15px;
+      font-size: 14px;
+    }
+    &__emphasis{
+      background-color: #e9ecef;
+      opacity: 1;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    & .reservation_label{
+      margin-top: 20px;
+    }
+    & .not_emphasis{
+      border-bottom: 1px solid #eaedef;
+      margin: 15px 0px;
+      padding-bottom: 15px;
+    }
+    & .reservation_btn{
+      background-color: #4a90e2;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor:pointer;
+      font-size: 18px;
+      height: 40px;
+      line-height: 0px;
+      margin: 20px 0px;
+      width: 100%;
+    }
+    & a{
+      border: 1px solid #6c757d;
+      background-color: #6c757d;
+      border-radius: 5px;
+      color: #fff;
+      cursor:pointer;
+      display: inline-block;
+      font-size: 18px;
+      height: 40px;
+      line-height: 40px;
+      margin-bottom: 10px;
+      text-align: center;
+      vertical-align: middle;
+      width: 100%;
+    }
+  }
+} 
+
+// reservations/show 履歴画面
+.reservation_history_table{
+  width: 70%;
+  margin: 50px auto;
+  height: 300px;
+& td{
+  padding: 20px;
+  margin: 0 15px;
+  border: 1px solid #eaedef;
+}
+& .reservation_td_left{
+  width: 25%;
+  border-right: none;
+  font-weight: bold;
+  }
+& .reservation_td_right{
+  border-left: none;
+  }
+}

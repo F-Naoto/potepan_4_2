@@ -1,0 +1,21 @@
+<div class="search_result_num">
+検索結果：<%= @keywords.count %>件
+</div>
+  <div class="rooms">
+    <div class="rooms__container">
+      <% @keywords.each do |keyword| %>
+        <div class="rooms__inner">
+          <%= link_to(room_path(keyword)) do %>
+            <div class="rooms__img">
+              <%= image_tag(keyword.img.url) %>
+            </div>
+            <div class="rooms__profile">
+              <p class="rooms__profile__name"><%= keyword.introduction %></p>
+              <p class="rooms__profile__address"><%= keyword.address %></p>
+              <p class="rooms__profile__price"><%= keyword.price %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>

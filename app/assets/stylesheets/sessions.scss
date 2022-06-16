@@ -1,0 +1,56 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// ログイン画面
+//users/:id/editのページ
+.login__container{
+  width: 60%;
+  height: 60%;
+  margin: 60px auto;
+  border: 1px solid #eaedef;
+  & .login__container__inner{
+    width: 80%;
+    margin: 0 auto;
+  }
+  & h1{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  & .input_container{
+    display: flex;
+    align-items:baseline;
+  }
+  & .must::before{
+    content: "必須";
+    color: #fff;
+    background-color: #ff0000a8;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 0 10px;
+    }
+  & input{
+    border: 1px solid #eaedef;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 70%;
+  }
+  & .login_btn{
+    color: white;
+    background-color: #007bff;
+    margin: 10px 0px 0px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor:pointer;
+    width: 80%;
+    height: 40px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+  & .new_user{
+    margin: 10px auto;
+    text-align: center;
+  }
+}

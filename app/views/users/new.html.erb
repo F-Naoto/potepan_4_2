@@ -1,0 +1,27 @@
+<div class="registration">
+  <div class="registration__container">
+    <div class="registration__container__inner">
+      <h1>新しいアカウントを作成</h1>
+      <%= form_with(model:@user, local:true) do |f| %>
+      <%= render 'layouts/error_messages', object: f.object %>
+      <div class="input_container">
+      <div class="must"></div>
+      <%= f.text_field :name, placeholder:"ユーザー名" %>
+      </div>
+      <div class="input_container">
+      <div class="must"></div><%= f.email_field :email, placeholder:"メールアドレス"%>
+      </div>
+      <div class="input_container">
+      <div class="must"></div>  <%= f.password_field :password, placeholder:"パスワード" %>
+      </div>
+      <div class="input_container">
+      <div class="must"></div><%= f.password_field :password_confirmation, placeholder:"パスワード確認" %>
+      </div>
+      <%= f.submit '新しいアカウントを作成', class:"resgistration_btn" %>
+      <div class="new_account">
+      <%=link_to "すでにアカウントをお持ちの方はログイン", new_session_path %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
